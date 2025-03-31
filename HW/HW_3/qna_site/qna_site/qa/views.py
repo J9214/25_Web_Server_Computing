@@ -10,6 +10,8 @@ def question_list(request):
 
 def question_detail(request, pk):
     question = get_object_or_404(Question, pk=pk)
+    question.views += 1
+    question.save()
     if request.method == 'POST':
         content = request.POST.get('content')
         if content and request.user.is_authenticated:

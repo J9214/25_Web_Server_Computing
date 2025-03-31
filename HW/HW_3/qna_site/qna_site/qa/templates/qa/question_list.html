@@ -13,12 +13,14 @@
                 <div class="card-body">
                     <h5 class="card-title">
                         <a href="{% url 'question_detail' question.pk %}">{{ question.title }}</a>
-                    </h5>
+                        <span class="badge bg-secondary">{{ question.answers.count }} answers</span>
+                    </h5>                    
                     <p class="card-text text-truncate">{{ question.content }}</p>
                 </div>
                 <div class="card-footer text-muted">
-                    By {{ question.author.username }} | {{ question.created_at|date:"Y-m-d H:i" }}
+                    By {{ question.author.username }} | {{ question.created_at|date:"Y-m-d H:i" }} | 👁 {{ question.views }} views
                 </div>
+                
             </div>
         </div>
     {% empty %}
