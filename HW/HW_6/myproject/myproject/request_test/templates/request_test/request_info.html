@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+ <meta charset="UTF-8">
+ <title>Request 실습</title>
+</head>
+<body>
+ <h2>🔍 request 객체 실습</h2>
+ <p><strong>요청 방식:</strong> {{ method }}</p> <!-- (1점) -->
+ <p><strong>요청 경로:</strong> {{ path }}</p> <!-- (1점) -->
+ <p><strong>전체 URL:</strong> {{ full_path }}</p> <!-- (1점) -->
+ <p><strong>클라이언트 IP:</strong> {{ client_ip }}</p> <!-- (1점) -->
+ <p><strong>User-Agent:</strong> {{ user_agent }}</p> <!-- (1점) -->
+
+ <hr>
+ <h3>🧾 GET 요청 정보</h3>
+ <pre>{{ get_data }}</pre> <!-- (1점) -->
+
+ <h3>🧾 POST 요청 정보</h3>
+ <pre>{{ post_data }}</pre> <!-- (1점) -->
+
+ <hr>
+ <h3>🙍 사용자 정보</h3>
+ <p>로그인 여부: {{ is_logged_in }}</p> <!-- (1점) -->
+
+ {% if is_logged_in %}
+ <p>사용자: {{ user }}</p> <!-- (1점) -->
+ {% else %}
+ <p>익명 사용자입니다.</p>
+ {% endif %}
+
+ <hr>
+ <p>session['demo']: {{ session_demo }}</p> <!-- (1점) -->
+
+ <hr>
+ <h3>📤 요청 테스트</h3>
+ <form method="get">
+   <input type="text" name="search" placeholder="GET 요청 파라미터">
+   <button type="submit">GET 전송</button>
+ </form>
+
+ <form method="post">
+   {% csrf_token %}
+   <input type="text" name="message" placeholder="POST 요청 내용">
+   <button type="submit">POST 전송</button>
+ </form>
+</body>
+</html>
